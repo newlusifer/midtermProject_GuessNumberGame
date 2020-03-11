@@ -35,11 +35,11 @@ io.on('connection', function (socket) {
         console.log(data.name + " : " + data.reply + " //" + data.countReply + " reply");//message คือ key ที่ต้องการ
 
         if (data.reply > NumberGuess) {
-            socket.emit('than', { status: 'Than' });
+            socket.emit('than', { status: 'That Than Number' });
         }
 
         if (data.reply < NumberGuess) {
-            socket.emit('less', { status: 'Less' });
+            socket.emit('less', { status: 'That Less Number' });
         }
 
         if (data.reply == NumberGuess)//have winner
@@ -53,6 +53,7 @@ io.on('connection', function (socket) {
 
                 if (data.name == leaderBoard[0].name) {
                     //still
+                    leaderBoard[0].countReply=data.countReply;
                 }
 
                 if (data.name != leaderBoard[0].name) {
@@ -74,6 +75,7 @@ io.on('connection', function (socket) {
 
                 if (data.name == leaderBoard[1].name) {
                     //still
+                    leaderBoard[1].countReply=data.countReply;
                 }
 
                 if (data.name != leaderBoard[1].name) {
@@ -91,6 +93,7 @@ io.on('connection', function (socket) {
                 if(data.name==leaderBoard[2].name)
                 {
                     //still
+                    leaderBoard[2].countReply=data.countReply;
                 }
 
                 if(data.name!=leaderBoard[2].name)
