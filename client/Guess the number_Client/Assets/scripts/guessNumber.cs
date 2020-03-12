@@ -51,12 +51,12 @@ public class guessNumber : MonoBehaviour
 
     void Update()
     {
-        /*if (refreashLDB==1)
-        {*/
+        if (refreashLDB==1)
+        {
             socket.Emit("wantLeaderBoard1");
             socket.Emit("wantLeaderBoard2");
             socket.Emit("wantLeaderBoard3");            
-        //}
+        }
        
     }
 
@@ -99,21 +99,21 @@ public class guessNumber : MonoBehaviour
     {
 
         showLDB1.text = "Number 1 is " + e.data["name"].str + " With " + e.data["countReply"].ToString()+" reply";
-       // refreashLDB = 0;
+        refreashLDB = 0;
     }
 
     private void showLeaderBoard2(SocketIOEvent e)
     {
 
         showLDB2.text = "Number 2 is " + e.data["name"].str + " With " + e.data["countReply"].ToString() + " reply";
-        //refreashLDB = 0;
+        refreashLDB = 0;
     }
 
     private void showLeaderBoard3(SocketIOEvent e)
     {
 
         showLDB3.text = "Number 3 is " + e.data["name"].str + " With " + e.data["countReply"].ToString() + " reply";
-       // refreashLDB = 0;
+        refreashLDB = 0;
     }
 
     public void ClickSendData()//testSendDataByClickButton

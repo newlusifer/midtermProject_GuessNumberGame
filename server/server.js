@@ -53,7 +53,7 @@ io.on('connection', function (socket) {
 
                 if (data.name == leaderBoard[0].name) {
                     //still
-                    leaderBoard[0].countReply=data.countReply;
+                    leaderBoard[0].countReply = data.countReply;
                 }
 
                 if (data.name != leaderBoard[0].name) {
@@ -73,32 +73,48 @@ io.on('connection', function (socket) {
 
             else if (data.countReply <= leaderBoard[1].countReply) {
 
+
                 if (data.name == leaderBoard[1].name) {
                     //still
-                    leaderBoard[1].countReply=data.countReply;
+                    leaderBoard[1].countReply = data.countReply;
                 }
 
                 if (data.name != leaderBoard[1].name) {
 
-                    if (leaderBoard[1].countReply <= leaderBoard[2].countReply) {
-                        leaderBoard[2] = leaderBoard[1];
+                    if (data.name == leaderBoard[0].name) {
+                        //still                   
                     }
 
-                    leaderBoard[1] = { name: data.name, countReply: data.countReply };
+                    if (data.name != leaderBoard[0].name) {
+                        //still    
+
+                        if (leaderBoard[1].countReply <= leaderBoard[2].countReply) {
+                            leaderBoard[2] = leaderBoard[1];
+                        }
+                        leaderBoard[1] = { name: data.name, countReply: data.countReply };
+                    }
+
+
                 }
             }
 
             else if (data.countReply <= leaderBoard[2].countReply) {
-                
-                if(data.name==leaderBoard[2].name)
-                {
+
+                if (data.name == leaderBoard[2].name) {
                     //still
-                    leaderBoard[2].countReply=data.countReply;
+                    leaderBoard[2].countReply = data.countReply;
                 }
 
-                if(data.name!=leaderBoard[2].name)
-                {
-                leaderBoard[2] = { name: data.name, countReply: data.countReply };
+                if (data.name != leaderBoard[2].name) {
+                    if (data.name == leaderBoard[0].name || data.name == leaderBoard[1].name) {
+                        //still                   
+                    }
+
+                    if (data.name != leaderBoard[0].name || data.name != leaderBoard[1].name) {
+                        leaderBoard[2] = { name: data.name, countReply: data.countReply };
+                    }
+
+
                 }
             }
 
